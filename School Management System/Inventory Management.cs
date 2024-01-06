@@ -334,6 +334,7 @@ namespace School_Management_System
 
         private void inReport_Click(object sender, EventArgs e)
         {
+            // Report for inventory
             reportViewer report = new reportViewer();
             report.Show();
         }
