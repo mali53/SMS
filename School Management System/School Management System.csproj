@@ -68,6 +68,12 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CrystalReportExam.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportExam.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,12 @@
       <DependentUpon>Exam Management.cs</DependentUpon>
     </Compile>
     <Compile Include="Exam.cs" />
+    <Compile Include="ExamReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExamReportForm.Designer.cs">
+      <DependentUpon>ExamReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fee Management.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,11 +201,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReportExam.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportExam.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Exam Management.resx">
       <DependentUpon>Exam Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExamReportForm.resx">
+      <DependentUpon>ExamReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fee Management.resx">
       <DependentUpon>Fee Management.cs</DependentUpon>

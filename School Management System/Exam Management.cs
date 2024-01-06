@@ -498,7 +498,11 @@ namespace School_Management_System
             ClearForm();
         }
 
-       
+        private void reportExambtn_Click(object sender, EventArgs e)
+        {
+            ExamReportForm report1 = new ExamReportForm();
+            report1.Show();
+        }
     }
 
 
