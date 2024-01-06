@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBB744D2-DAB9-4781-99AD-07B7B7F552F9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>School_Management_System</RootNamespace>
+    <AssemblyName>School Management System</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin Portal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin Portal.Designer.cs">
+      <DependentUpon>Admin Portal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exam Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam Management.Designer.cs">
+      <DependentUpon>Exam Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Exam.cs" />
+    <Compile Include="Fee Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fee Management.Designer.cs">
+      <DependentUpon>Fee Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IconTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inventory Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Management.Designer.cs">
+      <DependentUpon>Inventory Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Leave Apply Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Leave Apply Form.Designer.cs">
+      <DependentUpon>Leave Apply Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Leave.cs" />
+    <Compile Include="Lecture Scheduling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecture Scheduling.Designer.cs">
+      <DependentUpon>Lecture Scheduling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecture.cs" />
+    <Compile Include="Lecturer Portal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturer Portal.Designer.cs">
+      <DependentUpon>Lecturer Portal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturer.cs" />
+    <Compile Include="Manage Lecturers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage Lecturers.Designer.cs">
+      <DependentUpon>Manage Lecturers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage Students.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage Students.Designer.cs">
+      <DependentUpon>Manage Students.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.cs" />
+    <Compile Include="Profile Lect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile Lect.Designer.cs">
+      <DependentUpon>Profile Lect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile Student.Designer.cs">
+      <DependentUpon>Profile Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="reportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportViewer.Designer.cs">
+      <DependentUpon>reportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SessionInfo.cs" />
+    <Compile Include="SignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SignIn.Designer.cs">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student Portal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Student Portal.Designer.cs">
+      <DependentUpon>Student Portal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs" />
+    <Compile Include="View Lectures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View Lectures.Designer.cs">
+      <DependentUpon>View Lectures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View Paid Students.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View Paid Students.Designer.cs">
+      <DependentUpon>View Paid Students.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin Portal.resx">
+      <DependentUpon>Admin Portal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exam Management.resx">
+      <DependentUpon>Exam Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fee Management.resx">
+      <DependentUpon>Fee Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Management.resx">
+      <DependentUpon>Inventory Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Leave Apply Form.resx">
+      <DependentUpon>Leave Apply Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecture Scheduling.resx">
+      <DependentUpon>Lecture Scheduling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecturer Portal.resx">
+      <DependentUpon>Lecturer Portal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage Lecturers.resx">
+      <DependentUpon>Manage Lecturers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage Students.resx">
+      <DependentUpon>Manage Students.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile Lect.resx">
+      <DependentUpon>Profile Lect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile Student.resx">
+      <DependentUpon>Profile Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportViewer.resx">
+      <DependentUpon>reportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Student Portal.resx">
+      <DependentUpon>Student Portal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View Lectures.resx">
+      <DependentUpon>View Lectures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View Paid Students.resx">
+      <DependentUpon>View Paid Students.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vivid-blurred-colorful-background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\vivid-blurred-colorful-background1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="vivid-blurred-colorful-background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
