@@ -22,6 +22,9 @@ namespace School_Management_System
         public Lecture_Scheduling()
         {
             InitializeComponent();
+            
+            
+
 
             // Create a material theme manager and add the form to manage (this)
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
@@ -35,11 +38,12 @@ namespace School_Management_System
                 TextShade.WHITE
             );
             this.StartPosition = FormStartPosition.CenterScreen;
+            dt_lecsearchdate.ValueChanged += (sender, e) => LoadLectureDataIntoDataGridView();
         }
 
         private void Lecture_Scheduling_Load(object sender, EventArgs e)
         {
-            LoadLectureDataIntoDataGridView();
+            LoadAllLecturesIntoDataGridView();
             PopulateLecturerNames();
         }
 
@@ -72,6 +76,44 @@ namespace School_Management_System
 
         private void LoadLectureDataIntoDataGridView()
         {
+          
+            dataGrid_Lecture.Rows.Clear(); // Clear existing rows
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                // Database query (assuming you have a SqlConnection named 'connection'):
+                string query = "SELECT lecture_id, lecture_name, lecture_date, lecture_time, lecturer_name, grade " +
+                               "FROM lectures " +
+                               "WHERE lecture_date = @LectureDate"; // Add a WHERE clause to filter by lecture_date
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LectureDate", dt_lecsearchdate.Value.Date); // Use the selected date
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        // Add a row to the DataGridView for each record in the 'lectures' table
+                        dataGrid_Lecture.Rows.Add(
+                            reader["lecture_id"],
+                            reader["lecture_name"],
+                            reader["lecture_date"],
+                            reader["lecture_time"],
+                            reader["lecturer_name"],
+                            reader["grade"]
+                        );
+                    }
+
+                    reader.Close();
+                }
+            }
+        }
+
+        private void LoadAllLecturesIntoDataGridView()
+        {
             dataGrid_Lecture.Rows.Clear(); // Clear existing rows
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -87,7 +129,7 @@ namespace School_Management_System
 
                     while (reader.Read())
                     {
-                        // Add a row to the DataGridView for each record in the 'inventory' table
+                        // Add a row to the DataGridView for each record in the 'lectures' table
                         dataGrid_Lecture.Rows.Add(
                             reader["lecture_id"],
                             reader["lecture_name"],
