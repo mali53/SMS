@@ -170,7 +170,7 @@ namespace School_Management_System
                 // Call a method to insert the student data into the database
                 InsertStudentData(newStudent);
 
-                SendStudentAccountEmail(newStudent);
+               
 
                 MessageBox.Show("Record inserted successfully and email sent successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -180,30 +180,7 @@ namespace School_Management_System
             }
         }
 
-        private void SendStudentAccountEmail(Student student)
-        {
-            // Use your SMTP server details
-            string smtpServer = "smtp.gmail.com";
-            int smtpPort = 587;
-            string smtpUsername = "omarseyyed926@gmail.com"; // Update with your email
-            string smtpPassword = "skwn rkbg mqao eorw"; // Update with your email password
-
-            // Lecturer's email address
-            string studentEmail = student.Email;
-
-            // Subject and body of the email
-            string subject = "Account Created Successfully";
-            string body = $"Account details for {student.StudentName}:\n\nEmail: {student.Email}\nPassword: {student.Password}";
-
-            // Create a list containing only the lecturer's email address
-            List<string> recipientEmails = new List<string> { studentEmail };
-
-            // Create a dictionary to pass additional values to the email body (if needed)
-            Dictionary<string, object> values = new Dictionary<string, object>();
-
-            // Send the email
-            SendEmail(smtpUsername, recipientEmails, subject, body, values);
-        }
+       
 
         private void SendEmail(string senderEmail, List<string> recipientEmails, string subject, string body, Dictionary<string, object> values)
         {
