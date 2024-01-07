@@ -309,9 +309,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(196, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 22);
+            this.label6.Size = new System.Drawing.Size(98, 22);
             this.label6.TabIndex = 61;
-            this.label6.Text = "Lecture ID";
+            this.label6.Text = "Lecturer ID";
             // 
             // groupBox1
             // 
@@ -407,7 +407,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_mg_lecname);
             this.Name = "Manage_Lecturers";
-            this.Text = "Manage_Lecturers";
+            this.Text = "Manage Lecturers";
             this.Load += new System.EventHandler(this.Manage_Lecturers_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
