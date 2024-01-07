@@ -191,7 +191,7 @@ namespace School_Management_System
             string lecturerEmail = lecturer.Email;
 
             // Subject and body of the email
-            string subject = "Account Created Successfully";
+            string subject = "TechCube Lecturer Account Created Successfully";
             string body = $"Account details for {lecturer.LecturerName}:\n\nEmail: {lecturer.Email}\nPassword: {lecturer.Password}";
 
             // Create a list containing only the lecturer's email address
@@ -440,7 +440,7 @@ namespace School_Management_System
 
         private void btn_mg_lecupdate_Click(object sender, EventArgs e)
         {
-            // Check if a Lecturer ID is selected
+          
             if (cmb_lecid.SelectedItem == null)
             {
                 MessageBox.Show("Please select a Lecturer ID before updating.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -467,12 +467,6 @@ namespace School_Management_System
                 Email = txt_mg_lecemail.Text,
                 Gender = rd_mg_lecMale.Checked ? "Male" : "Female",
                 Username = txt_username.Text,
-
-
-
-
-                // Include the Student ID for updating
-
             };
 
             // Call a method to update the student data in the database
@@ -484,6 +478,8 @@ namespace School_Management_System
             ClearForm();
         }
 
+
+        //RM code
         private void UpdateLecturerData(Lecturer lecturer)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -494,26 +490,65 @@ namespace School_Management_System
                                "telephone = @Telephone, address = @Address, dob = @Dob, " +
                                "email = @Email, gender = @Gender, password=@Password,username = @Username WHERE lecturer_id = @LecturerID";
 
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                     {
-                        command.Parameters.AddWithValue("@LecturerID", lecturer.LecturerID);
-                        command.Parameters.AddWithValue("@LecturerName", lecturer.LecturerName);
-                        command.Parameters.AddWithValue("@Experiance", lecturer.Experiance);
-                        command.Parameters.AddWithValue("@Subject", lecturer.Subject);
-                        command.Parameters.AddWithValue("@Telephone", lecturer.Telephone);
-                        command.Parameters.AddWithValue("@Address", lecturer.Address);
-                        command.Parameters.AddWithValue("@Dob", lecturer.Dob);
-                        command.Parameters.AddWithValue("@Email", lecturer.Email);
-                        command.Parameters.AddWithValue("@Gender", lecturer.Gender);
+                // Get the existing lecturer data
+                Lecturer existingLecturer = GetLecturerData(lecturer.LecturerID);
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@LecturerID", lecturer.LecturerID);
+                    command.Parameters.AddWithValue("@LecturerName", lecturer.LecturerName);
+                    command.Parameters.AddWithValue("@Experiance", lecturer.Experiance);
+                    command.Parameters.AddWithValue("@Subject", lecturer.Subject);
+                    command.Parameters.AddWithValue("@Telephone", lecturer.Telephone);
+                    command.Parameters.AddWithValue("@Address", lecturer.Address);
+                    command.Parameters.AddWithValue("@Dob", lecturer.Dob);
+                    command.Parameters.AddWithValue("@Email", lecturer.Email);
+                    command.Parameters.AddWithValue("@Gender", lecturer.Gender);
                     command.Parameters.AddWithValue("@Password", lecturer.Password);
                     command.Parameters.AddWithValue("@Username", lecturer.Username);
 
-
-
                     command.ExecuteNonQuery();
-                     }
+
+                    // Check if email or password is changed
+                    if (existingLecturer.Email != lecturer.Email || existingLecturer.Password != lecturer.Password)
+                    {
+                        // Send email to the lecturer with updated information
+                        SendUpdatedLecturerEmail(lecturer);
+                    }
+                }
             }
         }
+
+
+        private void SendUpdatedLecturerEmail(Lecturer lecturer)
+        {
+            // Use your SMTP server details
+            string smtpServer = "smtp.gmail.com";
+            int smtpPort = 587;
+            string smtpUsername = "omarseyyed926@gmail.com"; // Update with your email
+            string smtpPassword = "skwn rkbg mqao eorw"; // Update with your email password
+
+            // Lecturer's email address
+            string lecturerEmail = lecturer.Email;
+
+            // Subject and body of the email
+            string subject = "TechCube Lecturer Account Updated Successfully";
+            string body = $"Account details for {lecturer.LecturerName} have been updated:\n\nEmail: {lecturer.Email}\nPassword: {lecturer.Password}";
+
+            // Create a list containing only the lecturer's email address
+            List<string> recipientEmails = new List<string> { lecturerEmail };
+
+            // Create a dictionary to pass additional values to the email body (if needed)
+            Dictionary<string, object> values = new Dictionary<string, object>();
+
+            // Send the email
+            SendEmail(smtpUsername, recipientEmails, subject, body, values);
+        }
+
+
+        //RM code ends
+
+
         /*-------------------------------------------------VALIDATION------------------------------------------------*/
         private bool ValidateLecturerInputs()
         {
