@@ -222,6 +222,9 @@ namespace School_Management_System
                     EnableSsl = true
                 };
 
+               
+
+
                 // Loop through each recipient email
                 foreach (string recipientEmail in recipientEmails)
                 {
@@ -335,7 +338,8 @@ namespace School_Management_System
                 string smtpUsername = "omarseyyed926@gmail.com"; // Update with your email
                 string smtpPassword = "skwn rkbg mqao eorw";
 
-                
+
+
 
                 using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
                 {
@@ -359,6 +363,8 @@ namespace School_Management_System
                 Console.WriteLine($"An error occurred while sending the email: {ex.Message}");
             }
         }
+
+
         private bool IsValidEmail(string email)
         {
             try
@@ -544,6 +550,8 @@ namespace School_Management_System
             // Optionally, clear the form after updating the student
             ClearForm();
         }
+
+
 
 
         private void UpdateStudentData(Student student)
