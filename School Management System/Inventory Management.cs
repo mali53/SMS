@@ -144,6 +144,7 @@ namespace School_Management_System
 
                 // Optionally, clear the form after adding the student
                 ClearForm();
+                LoadInventoryDataIntoDataGridView();
             }
             
 
