@@ -93,7 +93,18 @@ namespace School_Management_System
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
-            this.Close();
+           
+            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+               
+                Dashboard dashboardForm = new Dashboard();
+                dashboardForm.Show();
+
+                // Close or hide the current form (assuming it's your current dashboard form)
+                this.Close(); // or this.Hide();
+            }
         }
 
         private void btn_students_Click(object sender, EventArgs e)
