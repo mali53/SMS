@@ -160,5 +160,11 @@ namespace School_Management_System
             Lecture_Scheduling lectureScheduling = new Lecture_Scheduling();
             lectureScheduling.Show();
         }
+
+        private void buttonsocial_Click(object sender, EventArgs e)
+        {
+            SocialMedia social = new SocialMedia();
+            social.Show();
+        }
     }
 }

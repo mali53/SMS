@@ -276,6 +276,7 @@
             this.buttonsocial.Size = new System.Drawing.Size(128, 96);
             this.buttonsocial.TabIndex = 17;
             this.buttonsocial.UseVisualStyleBackColor = true;
+            this.buttonsocial.Click += new System.EventHandler(this.buttonsocial_Click);
             // 
             // label9soci
             // 
