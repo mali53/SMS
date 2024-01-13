@@ -175,6 +175,12 @@
     <Compile Include="SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="SocialMedia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SocialMedia.Designer.cs">
+      <DependentUpon>SocialMedia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Student Portal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SocialMedia.resx">
+      <DependentUpon>SocialMedia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Student Portal.resx">
       <DependentUpon>Student Portal.cs</DependentUpon>
