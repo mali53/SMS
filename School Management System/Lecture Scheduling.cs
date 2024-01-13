@@ -22,8 +22,8 @@ namespace School_Management_System
         public Lecture_Scheduling()
         {
             InitializeComponent();
-            
-            
+
+
 
 
             // Create a material theme manager and add the form to manage (this)
@@ -76,7 +76,7 @@ namespace School_Management_System
 
         private void LoadLectureDataIntoDataGridView()
         {
-          
+
             dataGrid_Lecture.Rows.Clear(); // Clear existing rows
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -166,6 +166,7 @@ namespace School_Management_System
             if (ValidateInputs())
             {
                 string selectedGrade = cmb_grade.SelectedItem?.ToString();
+
                 // Create an instance of the Inventory class and populate its properties
                 Lecture newLecture = new Lecture
                 {
@@ -176,76 +177,69 @@ namespace School_Management_System
                     Grade = cmb_grade.Text,
                 };
 
-                // Call a method to insert the student data into the database
+                // Call a method to insert the lecture data into the database
                 InsertLectureData(newLecture);
 
                 MessageBox.Show("Record inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Optionally, clear the form after adding the student
+                // Optionally, clear the form after adding the lecture
                 ClearForm();
                 LoadLectureDataIntoDataGridView();
-
-
 
                 if (!string.IsNullOrEmpty(selectedGrade))
                 {
                     // Get student emails for the selected grade
                     List<string> studentEmails = GetStudentEmailsFromDatabase(selectedGrade);
 
-                    // Assuming you have an instance of the Lecturer class
-                    Lecturer lecturer = new Lecturer
+                    // Get lecturer email using the selected lecturer name
+                    string lecturerEmail = GetLecturerEmailFromDatabase(newLecture.LecturerName);
+
+                    if (!string.IsNullOrEmpty(lecturerEmail))
                     {
-                        LecturerName = newLecture.LecturerName // Set the lecturer name
-                    };
+                        // Add lecturer's email to the list of recipients
+                        List<string> allEmails = new List<string> { lecturerEmail };
 
-                    // Get lecturer ID based on the lecturer name
-                    int lecturerId = GetLecturerIdFromDatabase(lecturer);
+                        // Add student emails to the list
+                        allEmails.AddRange(studentEmails);
 
-                    // Get lecturer email using the lecturer ID
-                    string lecturerEmail = GetLecturerEmailFromDatabase(lecturerId);
-
-                    // Add lecturer's email to the list of recipients
-                    List<string> allEmails = new List<string>();
-                    allEmails.Add(lecturerEmail);
-
-                    // Add student emails to the list
-                    List<string> studentEmailList = GetStudentEmailsFromDatabase(selectedGrade);
-                    allEmails.AddRange(studentEmailList);
-
-                    // Assuming you have a function to send emails
-                    foreach (string recipientEmail in allEmails)
-                    {
-                        if (!string.IsNullOrEmpty(recipientEmail))
+                        // Send emails to all recipients
+                        foreach (string recipientEmail in allEmails)
                         {
-                            Dictionary<string, object> emailValues = new Dictionary<string, object>
-            {
-                { "LectureName", newLecture.LectureName },
-                { "LectureDate", newLecture.LectureDate },
-                { "LectureTime", newLecture.LectureTime },
-                { "LecturerName", newLecture.LecturerName }
-            };
-
-                            SendEmail("omarseyyed926@gmail.com", allEmails, "Lecture Schedule", "The details of the Lecture scheduled are:\n\n Lecture Name:{LectureName},\n\n Lecture Date:{LectureDate},\n\n Lecture Time:{LectureTime},\n\n Lecturer Name:{LecturerName}", emailValues);
-                        }
-                        else
+                            if (!string.IsNullOrEmpty(recipientEmail))
+                            {
+                                Dictionary<string, object> emailValues = new Dictionary<string, object>
                         {
-                            // Log or handle the case where recipientEmail is null or empty
-                            MessageBox.Show("Recipient email is null or empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            { "LectureName", newLecture.LectureName },
+                            { "LectureDate", newLecture.LectureDate },
+                            { "LectureTime", newLecture.LectureTime },
+                            { "LecturerName", newLecture.LecturerName }
+                        };
+
+                                SendEmail("omarseyyed926@gmail.com", new List<string> { recipientEmail }, "Lecture Schedule", "The details of the Lecture scheduled are:\n\n Lecture Name:{LectureName},\n\n Lecture Date:{LectureDate},\n\n Lecture Time:{LectureTime},\n\n Lecturer Name:{LecturerName}", emailValues);
+                            }
+                            else
+                            {
+                                // Log or handle the case where recipientEmail is null or empty
+                                MessageBox.Show("Recipient email is null or empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+
+                        MessageBox.Show("Lecture scheduled successfully, and emails sent to students and the lecturer.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
-                    MessageBox.Show("Lecture scheduled successfully, and emails sent to students.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                    {
+                        MessageBox.Show("Failed to retrieve lecturer email. Please check the lecturer selection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Please select a grade before scheduling the Lecture.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-
-
             }
-
         }
+
+
+
         private int GetLecturerIdFromDatabase(Lecturer lecturer)
         {
             int lecturerId = 0; // Default value, assuming -1 is not a valid lecturer ID
@@ -314,10 +308,15 @@ namespace School_Management_System
                     // Log or handle the case where recipientEmail is null or empty
                     MessageBox.Show("Recipient email is null or empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            
-        }
+
+            }
+
+
 
         }
+
+       
+
         private string FormatEmailBody(string body, Dictionary<string, object> values)
         {
             foreach (var kvp in values)
@@ -340,7 +339,9 @@ namespace School_Management_System
 
             return body;
         }
-        private string GetLecturerEmailFromDatabase(int lecturerId)
+     
+
+        private string GetLecturerEmailFromDatabase(string lecturerName)
         {
             string lecturerEmail = string.Empty;
 
@@ -348,18 +349,23 @@ namespace School_Management_System
             // Use your existing database connection and query to fetch the lecturer's email
 
             // Example query:
-            string query = "SELECT email FROM lecturers WHERE lecturer_id = @LecturerID";
+            string query = "SELECT email FROM lecturers WHERE lecturer_name = @LecturerName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@LecturerID", lecturerId);
+                    command.Parameters.AddWithValue("@LecturerName", lecturerName);
 
                     try
                     {
                         connection.Open();
-                        lecturerEmail = command.ExecuteScalar()?.ToString();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            lecturerEmail = result.ToString();
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -370,6 +376,7 @@ namespace School_Management_System
 
             return lecturerEmail;
         }
+
 
 
         private List<string> GetStudentEmailsFromDatabase(string selectedGrade)
@@ -482,43 +489,81 @@ namespace School_Management_System
         {
             if (ValidateInputs())
             {
-                // Check if a ExamID  is selected
+                // Check if a LectureID is selected
                 if (txt_lecid.Text == null)
                 {
-                    MessageBox.Show("Please select a Exam ID before updating.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select a Lecture ID before updating.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Assuming ExamID is of type int
-                int selectedExamID = int.Parse(txt_lecid.Text.ToString());
+                // Assuming LectureID is of type int
+                int selectedLectureID = int.Parse(txt_lecid.Text.ToString());
 
-                // Create an instance of the Inventory class and populate its properties
-                Lecture updatedlecture = new Lecture
+                // Create an instance of the Lecture class and populate its properties
+                Lecture updatedLecture = new Lecture
                 {
-                    LectureId = selectedExamID, // Include the Class ID for updating
-                    
-
+                    LectureId = selectedLectureID, // Include the Lecture ID for updating
                     LectureName = txt_lecname.Text,
                     LectureDate = dt_lecdate.Value,
                     LectureTime = dt_lectime.Value,
                     LecturerName = cmb_lecturername.Text,
                     Grade = cmb_grade.Text,
-
-
-
-
                 };
 
-                // Call a method to update the student data in the database
-                UpdateLectureData(updatedlecture);
+                // Get student emails for the selected grade
+                List<string> studentEmails = GetStudentEmailsFromDatabase(updatedLecture.Grade);
 
-                MessageBox.Show("Record updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Get lecturer email using the selected lecturer name
+                string lecturerEmail = GetLecturerEmailFromDatabase(updatedLecture.LecturerName);
 
-                // Optionally, clear the form after updating the student
-                ClearForm();
-                LoadLectureDataIntoDataGridView();
+                if (!string.IsNullOrEmpty(lecturerEmail))
+                {
+                    // Add lecturer's email to the list of recipients
+                    List<string> allEmails = new List<string> { lecturerEmail };
+
+                    // Add student emails to the list
+                    allEmails.AddRange(studentEmails);
+
+                    // Send emails to all recipients
+                    foreach (string recipientEmail in allEmails)
+                    {
+                        if (!string.IsNullOrEmpty(recipientEmail))
+                        {
+                            Dictionary<string, object> emailValues = new Dictionary<string, object>
+                    {
+                        { "LectureName", updatedLecture.LectureName },
+                        { "LectureDate", updatedLecture.LectureDate },
+                        { "LectureTime", updatedLecture.LectureTime },
+                        { "LecturerName", updatedLecture.LecturerName }
+                    };
+
+                            SendEmail("omarseyyed926@gmail.com", new List<string> { recipientEmail }, "Updated Lecture Schedule", "The details of the updated Lecture are:\n\n Lecture Name:{LectureName},\n\n Lecture Date:{LectureDate},\n\n Lecture Time:{LectureTime},\n\n Lecturer Name:{LecturerName}", emailValues);
+                        }
+                        else
+                        {
+                            // Log or handle the case where recipientEmail is null or empty
+                            MessageBox.Show("Recipient email is null or empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                    // Call a method to update the lecture data in the database
+                    UpdateLectureData(updatedLecture);
+
+                    MessageBox.Show("Record updated successfully, and emails sent to students and the lecturer.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Optionally, clear the form after updating the lecture
+                    ClearForm();
+                    LoadLectureDataIntoDataGridView();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to retrieve lecturer email. Please check the lecturer selection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+
+
+        //my code starts
         private void UpdateLectureData(Lecture lecture)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -541,9 +586,14 @@ namespace School_Management_System
 
                     LoadLectureDataIntoDataGridView();
                 }
-
             }
+
+           
         }
+
+       
+
+        //my code ends
 
         private void DeleteLectureData(int lecid)
         {
