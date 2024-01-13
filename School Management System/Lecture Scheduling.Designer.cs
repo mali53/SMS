@@ -103,6 +103,7 @@
             this.dataGrid_Lecture.Location = new System.Drawing.Point(27, 309);
             this.dataGrid_Lecture.Name = "dataGrid_Lecture";
             this.dataGrid_Lecture.ReadOnly = true;
+            this.dataGrid_Lecture.RowHeadersVisible = false;
             this.dataGrid_Lecture.RowHeadersWidth = 51;
             this.dataGrid_Lecture.RowTemplate.Height = 24;
             this.dataGrid_Lecture.Size = new System.Drawing.Size(728, 193);
@@ -341,7 +342,7 @@
             this.Controls.Add(this.txt_lecname);
             this.Controls.Add(this.txt_lecid);
             this.Name = "Lecture_Scheduling";
-            this.Text = "Lecture_Scheduling";
+            this.Text = "Lecture Scheduling";
             this.Load += new System.EventHandler(this.Lecture_Scheduling_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Lecture)).EndInit();
             this.ResumeLayout(false);

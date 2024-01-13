@@ -452,7 +452,7 @@ namespace School_Management_System
                 // Populate your textboxes and comboboxes with the extracted data
                 txt_lecid.Text = lecId;
                 txt_lecname.Text = lecName;
-                dt_lecsearchdate.Text = lecDate;
+                dt_lecdate.Text = lecDate;
                 dt_lectime.Text = lecTime;
                 cmb_lecturername.Text = lecturername;
                 cmb_grade.Text = grd;
@@ -645,6 +645,7 @@ namespace School_Management_System
         private void btn_clear_Click(object sender, EventArgs e)
         {
             ClearForm();
+            LoadAllLecturesIntoDataGridView();
         }
     }
 }
