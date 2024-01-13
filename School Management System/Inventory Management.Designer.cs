@@ -52,6 +52,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.textBoxequip = new System.Windows.Forms.TextBox();
+            this.buttonsubmitequip = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_inventory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -318,11 +320,32 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.inReport_Click);
             // 
+            // textBoxequip
+            // 
+            this.textBoxequip.Location = new System.Drawing.Point(187, 250);
+            this.textBoxequip.Name = "textBoxequip";
+            this.textBoxequip.Size = new System.Drawing.Size(100, 22);
+            this.textBoxequip.TabIndex = 106;
+            // 
+            // buttonsubmitequip
+            // 
+            this.buttonsubmitequip.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonsubmitequip.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonsubmitequip.Location = new System.Drawing.Point(293, 250);
+            this.buttonsubmitequip.Name = "buttonsubmitequip";
+            this.buttonsubmitequip.Size = new System.Drawing.Size(75, 26);
+            this.buttonsubmitequip.TabIndex = 107;
+            this.buttonsubmitequip.Text = "Add";
+            this.buttonsubmitequip.UseVisualStyleBackColor = false;
+            this.buttonsubmitequip.Click += new System.EventHandler(this.buttonsubmitequip_Click);
+            // 
             // Inventory_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 655);
+            this.Controls.Add(this.buttonsubmitequip);
+            this.Controls.Add(this.textBoxequip);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.inReport);
             this.Controls.Add(this.txt_mg_invtclsname);
@@ -377,5 +400,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBoxequip;
+        private System.Windows.Forms.Button buttonsubmitequip;
     }
 }

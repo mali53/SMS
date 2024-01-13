@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Data.SqlClient;
+using System.Collections.Specialized;
+
+
 
 namespace School_Management_System
 {
@@ -31,10 +34,12 @@ namespace School_Management_System
         {
             InitializeComponent();
 
-
+            
 
 
             dataGrid_inventory.CellContentClick += dataGrid_inventory_CellContentClick;
+            buttonsubmitequip.Click += buttonsubmitequip_Click;
+
 
 
 
@@ -54,6 +59,8 @@ namespace School_Management_System
                 TextShade.WHITE
             );
             this.StartPosition = FormStartPosition.CenterScreen;
+
+          
         }
 
 
@@ -113,10 +120,13 @@ namespace School_Management_System
         private void Inventory_Management_Load(object sender, EventArgs e)
         {
             LoadInventoryDataIntoDataGridView();
+            LoadInventoryDataIntoDataGridView();
+            LoadEquipmentTypesFromDatabase();
+
+
+
 
         }
-
-
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -146,7 +156,7 @@ namespace School_Management_System
                 ClearForm();
                 LoadInventoryDataIntoDataGridView();
             }
-            
+
 
         }
 
@@ -217,7 +227,7 @@ namespace School_Management_System
                 ClearForm();
             }
 
-           
+
         }
         /*---------------------------------VALIDATION-----------------------------------------------------------------*/
         private bool ValidateInputs()
@@ -257,6 +267,37 @@ namespace School_Management_System
                 }
             }
         }
+
+        private void LoadEquipmentTypesFromDatabase()
+        {
+            try
+            {
+                cmb_mg_invtequiptype.Items.Clear(); // Clear existing items
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT equiment_types FROM equipment";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                cmb_mg_invtequiptype.Items.Add(reader["equiment_types"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading equipment types from the database: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void DeleteInventoryData(int classID)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -339,5 +380,58 @@ namespace School_Management_System
             reportViewer report = new reportViewer();
             report.Show();
         }
+
+
+        private void buttonsubmitequip_Click(object sender, EventArgs e)
+        {
+            string equipmentType = textBoxequip.Text.Trim();
+
+            if (!string.IsNullOrEmpty(equipmentType))
+            {
+                // Save the equipment type to the database
+                SaveEquipmentTypeToDatabase(equipmentType);
+
+                // Add the equipment type to the ComboBox
+                cmb_mg_invtequiptype.Items.Add(equipmentType);
+
+                // Clear the TextBox for the next entry
+                textBoxequip.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Equipment Added Successfully!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+        }
+
+        private void SaveEquipmentTypeToDatabase(string equipmentType)
+        {
+            string connectionString = "Data Source=DESKTOP-MGE1LM5;Initial Catalog=SMS;Integrated Security=True";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Insert the equipment type into the 'equipment' table
+                    string query = "INSERT INTO equipment (equiment_types) VALUES (@EquipmentType)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@EquipmentType", equipmentType);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error saving equipment type to database: {ex.Message}", ex);
+            }
+        }
+
     }
+
+
 }
