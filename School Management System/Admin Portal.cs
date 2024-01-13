@@ -54,6 +54,9 @@ namespace School_Management_System
             button2.Parent = pictureBox1;
             button2.BackColor = Color.Transparent;
 
+            buttonsocial.Parent = pictureBox1;
+            pictureBox1.BackColor = Color.Transparent;
+
 
             label1.Parent = pictureBox1;
             label1.BackColor = Color.Transparent;
@@ -78,6 +81,9 @@ namespace School_Management_System
 
             label8.Parent = pictureBox1;
             label8.BackColor = Color.Transparent;
+
+            label9soci.Parent = pictureBox1;
+            label9soci.BackColor = Color.Transparent;
 
         }
 
