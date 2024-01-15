@@ -247,7 +247,7 @@
             this.btn_mg_stdadd.BackColor = System.Drawing.Color.LimeGreen;
             this.btn_mg_stdadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_mg_stdadd.ForeColor = System.Drawing.Color.White;
-            this.btn_mg_stdadd.Location = new System.Drawing.Point(221, 533);
+            this.btn_mg_stdadd.Location = new System.Drawing.Point(94, 533);
             this.btn_mg_stdadd.Name = "btn_mg_stdadd";
             this.btn_mg_stdadd.Size = new System.Drawing.Size(118, 39);
             this.btn_mg_stdadd.TabIndex = 29;
@@ -259,7 +259,7 @@
             // 
             this.btn_mg_stdupdate.BackColor = System.Drawing.Color.Orange;
             this.btn_mg_stdupdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_mg_stdupdate.Location = new System.Drawing.Point(365, 533);
+            this.btn_mg_stdupdate.Location = new System.Drawing.Point(254, 533);
             this.btn_mg_stdupdate.Name = "btn_mg_stdupdate";
             this.btn_mg_stdupdate.Size = new System.Drawing.Size(118, 39);
             this.btn_mg_stdupdate.TabIndex = 30;
@@ -272,7 +272,7 @@
             this.btn_mg_stddelete.BackColor = System.Drawing.Color.Red;
             this.btn_mg_stddelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_mg_stddelete.ForeColor = System.Drawing.Color.White;
-            this.btn_mg_stddelete.Location = new System.Drawing.Point(509, 533);
+            this.btn_mg_stddelete.Location = new System.Drawing.Point(423, 533);
             this.btn_mg_stddelete.Name = "btn_mg_stddelete";
             this.btn_mg_stddelete.Size = new System.Drawing.Size(118, 39);
             this.btn_mg_stddelete.TabIndex = 31;
@@ -396,7 +396,7 @@
             // 
             this.btn_clear.BackColor = System.Drawing.SystemColors.Info;
             this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_clear.Location = new System.Drawing.Point(648, 533);
+            this.btn_clear.Location = new System.Drawing.Point(591, 533);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(118, 39);
             this.btn_clear.TabIndex = 109;
@@ -438,7 +438,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_mg_stdname);
             this.Name = "Manage_Students";
-            this.Text = "Manage_Students";
+            this.Text = "Manage Students";
             this.Load += new System.EventHandler(this.Manage_Students_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
