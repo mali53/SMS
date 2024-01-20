@@ -40,6 +40,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttongrading = new System.Windows.Forms.Button();
+            this.labelgrade = new System.Windows.Forms.Label();
+            this.label6lecturepo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +50,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 238);
+            this.label1.Location = new System.Drawing.Point(49, 195);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 22);
             this.label1.TabIndex = 4;
@@ -57,7 +60,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(191, 238);
+            this.label2.Location = new System.Drawing.Point(191, 195);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(135, 22);
             this.label2.TabIndex = 5;
@@ -67,7 +70,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(384, 238);
+            this.label3.Location = new System.Drawing.Point(398, 195);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 22);
             this.label3.TabIndex = 6;
@@ -77,7 +80,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(563, 238);
+            this.label4.Location = new System.Drawing.Point(572, 195);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 22);
             this.label4.TabIndex = 7;
@@ -90,9 +93,9 @@
             this.btn_holiday.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_holiday.FlatAppearance.BorderSize = 0;
             this.btn_holiday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_holiday.Location = new System.Drawing.Point(553, 113);
+            this.btn_holiday.Location = new System.Drawing.Point(553, 82);
             this.btn_holiday.Name = "btn_holiday";
-            this.btn_holiday.Size = new System.Drawing.Size(119, 110);
+            this.btn_holiday.Size = new System.Drawing.Size(128, 96);
             this.btn_holiday.TabIndex = 3;
             this.btn_holiday.UseVisualStyleBackColor = true;
             this.btn_holiday.Click += new System.EventHandler(this.btn_holiday_Click);
@@ -104,9 +107,9 @@
             this.btn_ruby.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_ruby.FlatAppearance.BorderSize = 0;
             this.btn_ruby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ruby.Location = new System.Drawing.Point(378, 113);
+            this.btn_ruby.Location = new System.Drawing.Point(377, 82);
             this.btn_ruby.Name = "btn_ruby";
-            this.btn_ruby.Size = new System.Drawing.Size(121, 110);
+            this.btn_ruby.Size = new System.Drawing.Size(128, 96);
             this.btn_ruby.TabIndex = 2;
             this.btn_ruby.UseVisualStyleBackColor = true;
             this.btn_ruby.Click += new System.EventHandler(this.btn_ruby_Click);
@@ -118,9 +121,9 @@
             this.btn_exam.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_exam.FlatAppearance.BorderSize = 0;
             this.btn_exam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_exam.Location = new System.Drawing.Point(195, 113);
+            this.btn_exam.Location = new System.Drawing.Point(195, 82);
             this.btn_exam.Name = "btn_exam";
-            this.btn_exam.Size = new System.Drawing.Size(131, 110);
+            this.btn_exam.Size = new System.Drawing.Size(128, 96);
             this.btn_exam.TabIndex = 1;
             this.btn_exam.UseVisualStyleBackColor = true;
             this.btn_exam.Click += new System.EventHandler(this.btn_exam_Click);
@@ -132,9 +135,9 @@
             this.btn_profile.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_profile.FlatAppearance.BorderSize = 0;
             this.btn_profile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_profile.Location = new System.Drawing.Point(34, 113);
+            this.btn_profile.Location = new System.Drawing.Point(34, 82);
             this.btn_profile.Name = "btn_profile";
-            this.btn_profile.Size = new System.Drawing.Size(119, 110);
+            this.btn_profile.Size = new System.Drawing.Size(128, 96);
             this.btn_profile.TabIndex = 0;
             this.btn_profile.UseVisualStyleBackColor = true;
             this.btn_profile.Click += new System.EventHandler(this.btn_profile_Click);
@@ -142,9 +145,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 63);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, 64);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(895, 403);
+            this.pictureBox1.Size = new System.Drawing.Size(928, 433);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -154,7 +157,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(707, 238);
+            this.label5.Location = new System.Drawing.Point(713, 195);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(164, 22);
             this.label5.TabIndex = 10;
@@ -167,18 +170,54 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(727, 113);
+            this.button1.Location = new System.Drawing.Point(727, 82);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 110);
+            this.button1.Size = new System.Drawing.Size(128, 96);
             this.button1.TabIndex = 9;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttongrading
+            // 
+            this.buttongrading.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttongrading.BackgroundImage")));
+            this.buttongrading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttongrading.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttongrading.FlatAppearance.BorderSize = 0;
+            this.buttongrading.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttongrading.Location = new System.Drawing.Point(34, 244);
+            this.buttongrading.Name = "buttongrading";
+            this.buttongrading.Size = new System.Drawing.Size(128, 96);
+            this.buttongrading.TabIndex = 11;
+            this.buttongrading.UseVisualStyleBackColor = true;
+            // 
+            // labelgrade
+            // 
+            this.labelgrade.AutoSize = true;
+            this.labelgrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelgrade.Location = new System.Drawing.Point(30, 358);
+            this.labelgrade.Name = "labelgrade";
+            this.labelgrade.Size = new System.Drawing.Size(141, 22);
+            this.labelgrade.TabIndex = 12;
+            this.labelgrade.Text = "Student Grading";
+            // 
+            // label6lecturepo
+            // 
+            this.label6lecturepo.AutoSize = true;
+            this.label6lecturepo.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6lecturepo.Location = new System.Drawing.Point(349, 9);
+            this.label6lecturepo.Name = "label6lecturepo";
+            this.label6lecturepo.Size = new System.Drawing.Size(233, 31);
+            this.label6lecturepo.TabIndex = 13;
+            this.label6lecturepo.Text = "LECTURER PORTAL";
             // 
             // Lecturer_Portal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 460);
+            this.ClientSize = new System.Drawing.Size(927, 493);
+            this.Controls.Add(this.label6lecturepo);
+            this.Controls.Add(this.labelgrade);
+            this.Controls.Add(this.buttongrading);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -191,7 +230,7 @@
             this.Controls.Add(this.btn_profile);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Lecturer_Portal";
-            this.Text = "Lecturer_Portal";
+            this.Text = "Lecturer Portal";
             this.Load += new System.EventHandler(this.Lecturer_Portal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -212,5 +251,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttongrading;
+        private System.Windows.Forms.Label labelgrade;
+        private System.Windows.Forms.Label label6lecturepo;
     }
 }

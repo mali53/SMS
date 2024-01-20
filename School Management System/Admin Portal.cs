@@ -166,5 +166,10 @@ namespace School_Management_System
             SocialMedia social = new SocialMedia();
             social.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
