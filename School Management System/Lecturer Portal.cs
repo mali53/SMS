@@ -48,6 +48,9 @@ namespace School_Management_System
             button1.Parent = pictureBox1;
             button1.BackColor = Color.Transparent;
 
+            buttongrading.Parent = pictureBox1;
+            buttongrading.BackColor = Color.Transparent;
+
             label1.Parent = pictureBox1;
             label1.BackColor = Color.Transparent;
             label2.Parent = pictureBox1;
@@ -58,6 +61,10 @@ namespace School_Management_System
             label4.BackColor = Color.Transparent;
             label5.Parent = pictureBox1;
             label5.BackColor = Color.Transparent;
+            labelgrade.Parent = pictureBox1;
+            labelgrade.BackColor = Color.Transparent;
+            label6lecturepo.Parent = pictureBox1;
+            label6lecturepo.BackColor = Color.Transparent;
         }
 
         private void btn_holiday_Click(object sender, EventArgs e)
