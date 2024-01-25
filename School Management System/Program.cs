@@ -16,7 +16,7 @@ namespace School_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Lecturer_Portal());
+            Application.Run(new Dashboard());
         }
     }
 }

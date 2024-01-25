@@ -360,7 +360,7 @@
             this.Controls.Add(this.txt_mg_exname);
             this.Controls.Add(this.txt_mg_exid);
             this.Name = "Exam_Management";
-            this.Text = "Exam_Management";
+            this.Text = "Exam Management";
             this.Load += new System.EventHandler(this.Exam_Management_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Exam)).EndInit();
             this.ResumeLayout(false);

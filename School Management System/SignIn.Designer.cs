@@ -96,7 +96,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::School_Management_System.Properties.Resources.vivid_blurred_colorful_background;
             this.pictureBox1.Location = new System.Drawing.Point(0, 64);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(928, 429);

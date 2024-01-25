@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,9 @@ namespace School_Management_System
             btn_std_profile.Parent = pictureBox1;
             btn_std_profile.BackColor = Color.Transparent;
 
+            button1results.Parent = pictureBox1;
+            button1results.BackColor = Color.Transparent;
+
             btn_std_ruby.Parent = pictureBox1;
             btn_std_ruby.BackColor = Color.Transparent;
 
@@ -51,8 +55,11 @@ namespace School_Management_System
             label2.Parent = pictureBox1;
             label2.BackColor = Color.Transparent;
 
-            label3.Parent = pictureBox1;
-            label3.BackColor = Color.Transparent;
+            label3studentportal.Parent = pictureBox1;
+            label3studentportal.BackColor = Color.Transparent;
+
+            label3checkresults.Parent = pictureBox1;
+            label3checkresults.BackColor = Color.Transparent;
         }
 
         private void btn_std_profile_Click(object sender, EventArgs e)
@@ -70,6 +77,20 @@ namespace School_Management_System
         {
             View_Lectures viewlecs = new View_Lectures();
             viewlecs.Show();
+        }
+
+        private void button1results_Click(object sender, EventArgs e)
+        {
+            ResultsForm formres = new ResultsForm();
+            formres.Show();
+        }
+
+        private void btn_std_ruby_Click(object sender, EventArgs e)
+        {
+            string websiteUrl = "http://localhost/ROBY%20Chatbot/ROBY%20Chatbot/index.html";
+
+            // Open the default web browser with the specified URL.
+            Process.Start(websiteUrl);
         }
     }
 

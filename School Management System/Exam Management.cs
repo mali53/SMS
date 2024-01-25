@@ -241,7 +241,7 @@ namespace School_Management_System
                        { "NameInvigilator", newExam.NameInvigilator }
                      };
 
-                        SendEmail("omarseyyed926@gmail.com", studentEmail, "Exam Schedule", "The details of the exam schedule are:\n\n Exam Name:{ExamName},\n\n Exam Date:{ExamDate},\n\n Exam Time:{ExamTime},\n\n Name of Invigilator:{NameInvigilator}", emailValues);
+                        SendEmail("omarseyyed926@gmail.com", studentEmail, "TechCube Exam Schedule", "The details of the exam schedule are:\n\n Exam Name:{ExamName},\n\n Exam Date:{ExamDate},\n\n Exam Time:{ExamTime},\n\n Name of Invigilator:{NameInvigilator}", emailValues);
 
 
                     }
@@ -439,8 +439,9 @@ namespace School_Management_System
                     command.Parameters.AddWithValue("@Grade", exam.Grade);
 
                     command.ExecuteNonQuery();
-
-                    LoadExamDataIntoDataGridView();
+                    SendUpdateNotificationEmail(exam.ExamId, exam.Grade, exam.ExamName, exam.ExamDate, exam.ExamTime, exam.NameInvigilator);
+                
+                LoadExamDataIntoDataGridView();
                 }
 
             }
@@ -491,6 +492,49 @@ namespace School_Management_System
                 }
             }
            
+        }
+
+        private void SendUpdateNotificationEmail(int examId, string grade, string examName, DateTime examDate, DateTime examTime, string invigilatorName)
+        {
+            try
+            {
+                // Get student emails for the specified grade
+                List<string> studentEmails = GetStudentEmailsFromDatabase(grade);
+
+                // SMTP server details (replace with your actual values)
+                string smtpServer = "smtp.gmail.com";
+                int smtpPort = 587;
+                string smtpUsername = "omarseyyed926@gmail.com";
+                string smtpPassword = "skwn rkbg mqao eorw";
+
+                SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort)
+                {
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(smtpUsername, smtpPassword),
+                    EnableSsl = true
+                };
+
+                foreach (string studentEmail in studentEmails)
+                {
+                    string subject = "TechCube Exam Update Notification";
+                    string body = $"Dear Student,\n\nThe details of your exam have been updated:\n\n" +
+                                  $"Exam ID: {examId}\n" +
+                                  $"Exam Name: {examName}\n" +
+                                  $"Exam Date: {examDate.ToShortDateString()}\n" +
+                                  $"Exam Time: {examTime.ToShortTimeString()}\n" +
+                                  $"Invigilator: {invigilatorName}\n\n" +
+                                  "Please check your portal for the latest information.";
+
+                    MailMessage mailMessage = new MailMessage("omarseyyed926@gmail.com", studentEmail, subject, body);
+
+                    // Send the email
+                    smtpClient.Send(mailMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while sending the email: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_clear_Click(object sender, EventArgs e)

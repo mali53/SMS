@@ -145,11 +145,43 @@ namespace School_Management_System
         {
 
         }
+        private bool IsEmailExists(string email)
+        {
+            string query = "SELECT COUNT(*) FROM students WHERE email = @Email";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+
+                    try
+                    {
+                        connection.Open();
+                        int count = (int)command.ExecuteScalar();
+
+                        // If count is greater than 0, the email already exists
+                        return count > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception as needed
+                        MessageBox.Show($"An error occurred while checking if the email exists: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false; // Return false in case of an exception
+                    }
+                }
+            }
+        }
 
         private void btn_mg_stdadd_Click(object sender, EventArgs e)
         {
             if (ValidateStudentInputs())
             {
+                if (IsEmailExists(txt_mg_stdemail.Text))
+                {
+                    MessageBox.Show("Email already exists. Please use a different email.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Create an instance of the Student class and populate its properties
                 Student newStudent = new Student
                 {
@@ -489,6 +521,36 @@ namespace School_Management_System
 
         }
 
+        private bool IsEmailExists(string email, int currentStudentID)
+        {
+            string query = "SELECT COUNT(*) FROM students WHERE email = @Email AND student_id != @CurrentStudentID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@CurrentStudentID", currentStudentID);
+
+                    try
+                    {
+                        connection.Open();
+                        int count = (int)command.ExecuteScalar();
+
+                        // If count is greater than 0, the email already exists
+                        return count > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception as needed
+                        MessageBox.Show($"An error occurred while checking if the email exists: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false; // Return false in case of an exception
+                    }
+                }
+            }
+        }
+
+
         private void btn_mg_stdupdate_Click(object sender, EventArgs e)
         {
             // Check if a Student ID is selected
@@ -518,6 +580,12 @@ namespace School_Management_System
                 Username = txt_username.Text
 
             };
+
+            if (IsEmailExists(updatedStudent.Email, selectedStudentID))
+            {
+                MessageBox.Show("Email already exists. Please use a different email.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Call a method to update the student data in the database
             UpdateStudentData(updatedStudent);

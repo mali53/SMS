@@ -137,6 +137,7 @@
             this.cmb_stdid.Name = "cmb_stdid";
             this.cmb_stdid.Size = new System.Drawing.Size(121, 30);
             this.cmb_stdid.TabIndex = 33;
+            this.cmb_stdid.SelectedIndexChanged += new System.EventHandler(this.cmb_stdid_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -399,7 +400,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_mg_fesearch);
             this.Name = "Fee_Management";
-            this.Text = "ee";
+            this.Text = "Fee Management";
             this.Load += new System.EventHandler(this.Fee_Management_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
