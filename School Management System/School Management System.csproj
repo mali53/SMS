@@ -217,6 +217,18 @@
       <DependentUpon>Lecturer Portal.cs</DependentUpon>
     </Compile>
     <Compile Include="Lecturer.cs" />
+    <Compile Include="LectureReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LectureReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LectureReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LectureReportForm.Designer.cs">
+      <DependentUpon>LectureReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Manage Lecturers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +345,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lecturer Portal.resx">
       <DependentUpon>Lecturer Portal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LectureReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LectureReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LectureReportForm.resx">
+      <DependentUpon>LectureReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Manage Lecturers.resx">
       <DependentUpon>Manage Lecturers.cs</DependentUpon>
