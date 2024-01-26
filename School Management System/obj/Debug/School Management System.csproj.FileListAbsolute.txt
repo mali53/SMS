@@ -130,3 +130,4 @@ C:\Users\RAVINDU\Videos\School Management System (2)\School Management System\Sc
 C:\Users\RAVINDU\Videos\School Management System (2)\School Management System\School Management System\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\RAVINDU\Videos\School Management System (2)\School Management System\School Management System\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\RAVINDU\Videos\School Management System (2)\School Management System\School Management System\bin\Debug\System.ValueTuple.xml
+C:\Users\RAVINDU\Videos\School Management System (2)\School Management System\School Management System\obj\Debug\School_Management_System.LectureReportForm.resources

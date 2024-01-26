@@ -647,5 +647,11 @@ namespace School_Management_System
             ClearForm();
             LoadAllLecturesIntoDataGridView();
         }
+
+        private void reportlectutebutton_Click(object sender, EventArgs e)
+        {
+            LectureReportForm reportlecture = new LectureReportForm();
+            reportlecture.Show();
+        }
     }
 }

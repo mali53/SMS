@@ -53,6 +53,7 @@
             this.txt_lecid = new System.Windows.Forms.TextBox();
             this.cmb_lecturername = new System.Windows.Forms.ComboBox();
             this.btn_clear = new System.Windows.Forms.Button();
+            this.reportlectutebutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Lecture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -309,19 +310,33 @@
             // 
             this.btn_clear.BackColor = System.Drawing.Color.Tan;
             this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_clear.Location = new System.Drawing.Point(420, 247);
+            this.btn_clear.Location = new System.Drawing.Point(599, 247);
             this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(328, 39);
+            this.btn_clear.Size = new System.Drawing.Size(96, 39);
             this.btn_clear.TabIndex = 126;
             this.btn_clear.Text = "Clear";
             this.btn_clear.UseVisualStyleBackColor = false;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // reportlectutebutton
+            // 
+            this.reportlectutebutton.BackColor = System.Drawing.Color.Navy;
+            this.reportlectutebutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportlectutebutton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.reportlectutebutton.Location = new System.Drawing.Point(480, 247);
+            this.reportlectutebutton.Name = "reportlectutebutton";
+            this.reportlectutebutton.Size = new System.Drawing.Size(96, 39);
+            this.reportlectutebutton.TabIndex = 127;
+            this.reportlectutebutton.Text = "Report";
+            this.reportlectutebutton.UseVisualStyleBackColor = false;
+            this.reportlectutebutton.Click += new System.EventHandler(this.reportlectutebutton_Click);
             // 
             // Lecture_Scheduling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(789, 531);
+            this.Controls.Add(this.reportlectutebutton);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.cmb_lecturername);
             this.Controls.Add(this.label6);
@@ -377,5 +392,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button reportlectutebutton;
     }
 }
