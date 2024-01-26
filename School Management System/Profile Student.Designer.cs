@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
             this.btn_pr_st_exit = new MaterialSkin.Controls.MaterialFlatButton();
             this.txt_pr_st_id = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txt_pr_st_name = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -49,6 +50,8 @@
             this.txt_pr_st_email = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.txt_pr_st_gender = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.pictureBox1codestu = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1codestu)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_pr_st_exit
@@ -369,11 +372,22 @@
             this.txt_pr_st_gender.UseSystemPasswordChar = false;
             this.txt_pr_st_gender.Click += new System.EventHandler(this.materialSingleLineTextField10_Click);
             // 
+            // pictureBox1codestu
+            // 
+            this.pictureBox1codestu.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1codestu.Image")));
+            this.pictureBox1codestu.Location = new System.Drawing.Point(12, 390);
+            this.pictureBox1codestu.Name = "pictureBox1codestu";
+            this.pictureBox1codestu.Size = new System.Drawing.Size(54, 48);
+            this.pictureBox1codestu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1codestu.TabIndex = 21;
+            this.pictureBox1codestu.TabStop = false;
+            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox1codestu);
             this.Controls.Add(this.materialLabel10);
             this.Controls.Add(this.txt_pr_st_gender);
             this.Controls.Add(this.materialLabel9);
@@ -398,6 +412,7 @@
             this.Name = "Profile";
             this.Text = "Profile";
             this.Load += new System.EventHandler(this.Profile_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1codestu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -426,5 +441,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_pr_st_email;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_pr_st_gender;
+        private System.Windows.Forms.PictureBox pictureBox1codestu;
     }
 }

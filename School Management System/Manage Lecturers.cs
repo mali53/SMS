@@ -146,10 +146,44 @@ namespace School_Management_System
             return lecturerIDs;
         }
 
+        private bool IsEmailExists(string email)
+        {
+            string query = "SELECT COUNT(*) FROM lecturers WHERE email = @Email";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+
+                    try
+                    {
+                        connection.Open();
+                        int count = (int)command.ExecuteScalar();
+
+                        // If count is greater than 0, the email already exists
+                        return count > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception as needed
+                        MessageBox.Show($"An error occurred while checking if the email exists: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false; // Return false in case of an exception
+                    }
+                }
+            }
+        }
+
         private void btn_mg_lecadd_Click(object sender, EventArgs e)
         {
             if (ValidateLecturerInputs())
             {
+
+                if (IsEmailExists(txt_mg_lecemail.Text))
+                {
+                    MessageBox.Show("Email already exists. Please use a different email.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 // Create an instance of the Lecturer class and populate its properties
                 Lecturer newLecturer = new Lecturer
                 {
@@ -338,6 +372,35 @@ namespace School_Management_System
             }
         }
 
+        private bool IsEmailExists(string email, int currentLecturerID)
+        {
+            string query = "SELECT COUNT(*) FROM lecturers WHERE email = @Email AND lecturer_id != @CurrentLecturerID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+                    command.Parameters.AddWithValue("@CurrentLecturerID", currentLecturerID);
+
+                    try
+                    {
+                        connection.Open();
+                        int count = (int)command.ExecuteScalar();
+
+                        // If count is greater than 0, the email already exists
+                        return count > 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception as needed
+                        MessageBox.Show($"An error occurred while checking if the email exists: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false; // Return false in case of an exception
+                    }
+                }
+            }
+        }
+
         private Lecturer GetLecturerData(int lecturerID)
         {
             Lecturer lecturer = new Lecturer();
@@ -468,6 +531,12 @@ namespace School_Management_System
                 Gender = rd_mg_lecMale.Checked ? "Male" : "Female",
                 Username = txt_username.Text,
             };
+
+            if (IsEmailExists(updatedLecturer.Email, selectedLecturerID))
+            {
+                MessageBox.Show("Email already exists. Please use a different email.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Call a method to update the student data in the database
             UpdateLecturerData(updatedLecturer);

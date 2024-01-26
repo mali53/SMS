@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -92,7 +93,10 @@ namespace School_Management_System
 
         private void btn_ruby_Click(object sender, EventArgs e)
         {
+            string websiteUrl = "http://localhost/ROBY%20Chatbot/ROBY%20Chatbot/index.html";
 
+            // Open the default web browser with the specified URL.
+            Process.Start(websiteUrl);
         }
 
         private void button1_Click(object sender, EventArgs e)

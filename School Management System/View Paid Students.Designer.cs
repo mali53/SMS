@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.dataGrid_view_pd_std = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_view_stdid = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_mg_fesearch = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_view_stdid = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_mg_fesearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_view_pd_std)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,52 +60,11 @@
             this.dataGrid_view_pd_std.Name = "dataGrid_view_pd_std";
             this.dataGrid_view_pd_std.ReadOnly = true;
             this.dataGrid_view_pd_std.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGrid_view_pd_std.RowHeadersVisible = false;
             this.dataGrid_view_pd_std.RowHeadersWidth = 51;
             this.dataGrid_view_pd_std.RowTemplate.Height = 24;
             this.dataGrid_view_pd_std.Size = new System.Drawing.Size(851, 354);
             this.dataGrid_view_pd_std.TabIndex = 105;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(219, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 22);
-            this.label2.TabIndex = 104;
-            this.label2.Text = "Student ID";
-            // 
-            // txt_view_stdid
-            // 
-            this.txt_view_stdid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_view_stdid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_view_stdid.Location = new System.Drawing.Point(327, 12);
-            this.txt_view_stdid.Name = "txt_view_stdid";
-            this.txt_view_stdid.Size = new System.Drawing.Size(194, 28);
-            this.txt_view_stdid.TabIndex = 103;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btn_mg_fesearch);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txt_view_stdid);
-            this.groupBox1.Location = new System.Drawing.Point(24, 79);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(853, 56);
-            this.groupBox1.TabIndex = 106;
-            this.groupBox1.TabStop = false;
-            // 
-            // btn_mg_fesearch
-            // 
-            this.btn_mg_fesearch.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_mg_fesearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_mg_fesearch.Location = new System.Drawing.Point(527, 6);
-            this.btn_mg_fesearch.Name = "btn_mg_fesearch";
-            this.btn_mg_fesearch.Size = new System.Drawing.Size(118, 39);
-            this.btn_mg_fesearch.TabIndex = 105;
-            this.btn_mg_fesearch.Text = "Search";
-            this.btn_mg_fesearch.UseVisualStyleBackColor = false;
-            this.btn_mg_fesearch.Click += new System.EventHandler(this.btn_mg_fesearch_Click);
             // 
             // Column1
             // 
@@ -149,6 +108,48 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(219, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 22);
+            this.label2.TabIndex = 104;
+            this.label2.Text = "Student ID";
+            // 
+            // txt_view_stdid
+            // 
+            this.txt_view_stdid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_view_stdid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_view_stdid.Location = new System.Drawing.Point(327, 12);
+            this.txt_view_stdid.Name = "txt_view_stdid";
+            this.txt_view_stdid.Size = new System.Drawing.Size(194, 28);
+            this.txt_view_stdid.TabIndex = 103;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btn_mg_fesearch);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txt_view_stdid);
+            this.groupBox1.Location = new System.Drawing.Point(24, 79);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(853, 56);
+            this.groupBox1.TabIndex = 106;
+            this.groupBox1.TabStop = false;
+            // 
+            // btn_mg_fesearch
+            // 
+            this.btn_mg_fesearch.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_mg_fesearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_mg_fesearch.Location = new System.Drawing.Point(527, 6);
+            this.btn_mg_fesearch.Name = "btn_mg_fesearch";
+            this.btn_mg_fesearch.Size = new System.Drawing.Size(118, 39);
+            this.btn_mg_fesearch.TabIndex = 105;
+            this.btn_mg_fesearch.Text = "Search";
+            this.btn_mg_fesearch.UseVisualStyleBackColor = false;
+            this.btn_mg_fesearch.Click += new System.EventHandler(this.btn_mg_fesearch_Click);
+            // 
             // View_Paid_Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -157,7 +158,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGrid_view_pd_std);
             this.Name = "View_Paid_Students";
-            this.Text = "View_Paid_Students";
+            this.Text = "View Paid Students";
             this.Load += new System.EventHandler(this.View_Paid_Students_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_view_pd_std)).EndInit();
             this.groupBox1.ResumeLayout(false);

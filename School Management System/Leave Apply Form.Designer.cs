@@ -151,6 +151,7 @@
             this.datagrid_leave.Location = new System.Drawing.Point(48, 277);
             this.datagrid_leave.Name = "datagrid_leave";
             this.datagrid_leave.ReadOnly = true;
+            this.datagrid_leave.RowHeadersVisible = false;
             this.datagrid_leave.RowHeadersWidth = 51;
             this.datagrid_leave.RowTemplate.Height = 24;
             this.datagrid_leave.Size = new System.Drawing.Size(707, 343);
@@ -201,7 +202,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_lv_lvid);
             this.Name = "Leave_Apply_Form";
-            this.Text = "Leave_Apply_Form";
+            this.Text = "Leave Apply Form";
             this.Load += new System.EventHandler(this.Leave_Apply_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagrid_leave)).EndInit();
             this.ResumeLayout(false);

@@ -23,6 +23,7 @@ namespace School_Management_System
         public Fee_Management()
         {
             InitializeComponent();
+            cmb_stdid.SelectedIndexChanged += cmb_stdid_SelectedIndexChanged;
 
             // Create a material theme manager and add the form to manage (this)
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
@@ -389,6 +390,72 @@ namespace School_Management_System
         private void btn_clear_Click(object sender, EventArgs e)
         {
             ClearForm();
+        }
+        private Student GetStudentData(int studentID)
+        {
+            Student student = new Student();
+
+            string connectionString = "Data Source=DESKTOP-MGE1LM5;Initial Catalog=SMS;Integrated Security=True";
+            string query = "SELECT * FROM students WHERE student_id = @StudentID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlParameter param = new SqlParameter("@StudentID", SqlDbType.Int);
+                    param.Value = studentID;
+                    command.Parameters.Add(param);
+
+                    try
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        if (reader.Read())
+                        {
+                            student.StudentID = (int)reader["student_id"];
+                            student.StudentName = GetValueOrDefault<string>(reader, "student_name");
+                            student.Grade = GetValueOrDefault<string>(reader, "grade");
+                            student.ClassName = GetValueOrDefault<string>(reader, "çlass_name");
+                        }
+
+                        reader.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred: {ex.Message}\nQuery: {query}\nStackTrace: {ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            return student;
+        }
+
+        private void DisplayStudentData(Student student)
+        {
+            // Display the student data in the text fields
+            txt_mg_fedname.Text = student.StudentName;
+            txt_mg_fegrade.Text = student.Grade;
+            txt_mg_feeclass.Text = student.ClassName;
+        }
+
+        private void cmb_stdid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmb_stdid.SelectedItem != null)
+            {
+                if (int.TryParse(cmb_stdid.SelectedItem.ToString(), out int selectedStudentID))
+                {
+                    // Fetch student data for the selected student ID
+                    Student selectedStudent = GetStudentData(selectedStudentID);
+
+                    // Display the student data in the text fields
+                    DisplayStudentData(selectedStudent);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Student ID selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
